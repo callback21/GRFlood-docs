@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Installation - GRFlood</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Installation", url: "#_top", children: [
+              {title: "Install from PyPI", url: "#install-from-pypi" },
+              {title: "Install from conda-forge", url: "#install-from-conda-forge" },
+              {title: "Install from GitHub", url: "#install-from-github" },
+              {title: "Colaboratory", url: "#colaboratory" },
+              {title: "Upgrade GRFlood", url: "#upgrade-grflood" },
+          ]},
+        ];
+
+    </script>
+    <script src="../js/base.js"></script>
+      <script src="../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Usage/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Usage/" class="btn btn-xs btn-link">
+        Usage
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href=".." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href=".." class="btn btn-xs btn-link">
+        Home
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="installation">Installation</h1>
+<h2 id="install-from-pypi">Install from PyPI</h2>
+<p><br></p>
+<p><code>GRFlood</code> is available on PyPI. To install <code>GRFlood</code>, run this command in your terminal:</p>
+<pre><code class="language-sh">pip install GRFlood
+</code></pre>
+<h2 id="install-from-conda-forge">Install from conda-forge</h2>
+<p><br></p>
+<p><code>GRFlood</code> is also available on conda-forge. If you have Anaconda or Miniconda installed on your computer, you can create a conda Python environment to install <code>GRFlood</code>:</p>
+<pre><code class="language-sh">conda install -c defaults -c conda-forge GRFlood
+</code></pre>
+<h2 id="install-from-github">Install from GitHub</h2>
+<p><br>
+To install the development version from GitHub using Git, run the following command in your terminal:</p>
+<pre><code class="language-sh">pip install git+https://github.com/callback21/GRFlood
+</code></pre>
+<h2 id="colaboratory">Colaboratory</h2>
+<p><br>
+Colaboratory lets you connect to a local runtime using Jupyter. This allows you to execute code on your local hardware and have access to your local file system.</p>
+<ul>
+<li>
+<p><strong>Step 1: Install Jupyter</strong><br>
+Install <a href="https://jupyter.org/install">Jupyter</a> on your local machine.</p>
+</li>
+<li>
+<p><strong>Step 2: Install and enable the jupyter_http_over_ws jupyter extension (one-off)</strong> <br>
+The <code>jupyter_http_over_ws</code> extension is authored by the Colaboratory team and available on <a href="https://github.com/googlecolab/jupyter_http_over_ws">GitHub</a>.</p>
+</li>
+</ul>
+<pre><code class="language-sh">pip install jupyter_http_over_ws
+jupyter serverextension enable --py jupyter_http_over_ws
+</code></pre>
+<ul>
+<li><strong>Step 3: Start server and authenticate</strong><br>
+New notebook servers are started normally, though you will need to set a flag to explicitly trust WebSocket connections from the Colaboratory frontend.
+Once the server has started, it will print a message with the initial backend URL used for authentication. Make a copy of this URL as you'll need to provide this in the next step.</li>
+</ul>
+<pre><code class="language-sh">jupyter notebook \
+  --NotebookApp.allow_origin='https://colab.research.google.com' \
+  --port=8888 \
+  --NotebookApp.port_retries=0
+</code></pre>
+<ul>
+<li><strong>Step 4: Connect to the local runtime</strong><br>
+In Colaboratory, click the 'Connect' button and select 'Connect to local runtime…'. Enter the URL from the previous step in the dialogue that appears and click the 'Connect' button. After this, you should now be connected to your local runtime.</li>
+</ul>
+<h2 id="upgrade-grflood">Upgrade GRFlood</h2>
+<p><br>
+If you ha ve installed <code>GRFlood</code> before and want to upgrade to the latest version, you can run the following command in your terminal:</p>
+<pre><code class="language-sh">pip install -U GRFlood
+</code></pre>
+<p>If you use conda, you can update <code>GRFlood</code> to the latest version by running the following command in your terminal:</p>
+<pre><code class="language-sh">conda update GRFlood
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../Usage/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../Usage/" class="btn btn-xs btn-link">
+        Usage
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href=".." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href=".." class="btn btn-xs btn-link">
+        Home
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/callback21/GRFlood/edit/master/docs/Installation.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/callback21/GRFlood/">Windmill Dark</a> theme by None (noraj).</p>
+</footer>
+
+</body>
+</html>

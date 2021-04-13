@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Get Started - GRFlood</title>
+    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+        ];
+
+    </script>
+    <script src="../js/base.js"></script>
+      <script src="../search/main.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../about/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../about/" class="btn btn-xs btn-link">
+        About
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Usage/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Usage/" class="btn btn-xs btn-link">
+        Usage
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <p>This Get Started guide is intended as a quick example to start programming with <code>GRFlood</code> .</p>
+<p>► Let's install our package.</p>
+<pre><code class="language-bash">In : pip install GRFlood
+</code></pre>
+<p>► Upload our class <code>Flood</code>.</p>
+<pre><code class="language-bash">In : from GRFlood import Flood
+</code></pre>
+<p>► Creates an instance of the class <code>Flood</code>.</p>
+<pre><code class="language-bash">In : model = Flood('Example_Water_Volume.csv')
+</code></pre>
+<pre><code class="language-bash">Out : Example_Water_Volume.csv(application/vnd.ms-excel) - 99369 bytes, last modified: 23/02/2021 - 100% done
+Saving Example_Water_Volume.csv to Example_Water_Volume.csv
+            new Q (l/s)
+Date                   
+1999-01-01          910
+1999-01-02          900
+1999-01-03          900
+1999-01-04          890
+1999-01-05          890
+...                 ...
+2016-12-27          290
+2016-12-28          290
+2016-12-29          290
+2016-12-30          290
+2016-12-31          290
+
+[6575 rows x 1 columns]
+
+</code></pre>
+<p>► To view our data you can print.</p>
+<pre><code class="language-bash">In : model.data
+</code></pre>
+<pre><code class="language-bash">Out : new Q (l/s)
+Date    
+1999-01-01  910
+1999-01-02  900
+1999-01-03  900
+1999-01-04  890
+1999-01-05  890
+... ...
+2016-12-27  290
+2016-12-28  290
+2016-12-29  290
+2016-12-30  290
+2016-12-31  290
+6575 rows × 1 columns
+</code></pre>
+<p>► Normalized our data.</p>
+<pre><code class="language-bash">In : model.normalized_features(model.data)
+</code></pre>
+<pre><code class="language-bash">Out: [[0.0155052 ]
+ [0.01533481]
+ [0.01533481]
+ ...
+ [0.00494122]
+ [0.00494122]
+ [0.00494122]]
+</code></pre>
+<p>► To view our normalized data you can print.</p>
+<pre><code class="language-bash">In : model.dataset
+</code></pre>
+<pre><code class="language-bash">Out : array([[0.0155052 ],
+       [0.01533481],
+       [0.01533481],
+       ...,
+       [0.00494122],
+       [0.00494122],
+       [0.00494122]])
+</code></pre>
+<p>► Split our data.</p>
+<pre><code class="language-bash">In : model.split(model.dataset, ratio = 75)
+
+</code></pre>
+<pre><code class="language-bash">Out : 6575
+train size: 4931 and test size : 1644
+</code></pre>
+<p>► To view more details about split. </p>
+<pre><code class="language-bash">In : print(&quot;train data :{} \n test data : {} \n train size : {} \n test size : {}  &quot;.format(model.train,model.test,model.train_size,model.test_size))
+</code></pre>
+<pre><code class="language-bash">Out : train data :[[0.0155052 ]
+ [0.01533481]
+ [0.01533481]
+ ...
+ [0.00460044]
+ [0.00460044]
+ [0.00443006]] 
+ test data : [[0.00425967]
+ [0.00425967]
+ [0.00408928]
+ ...
+ [0.00494122]
+ [0.00494122]
+ [0.00494122]] 
+ train size : 4931 
+ test size : 1644  
+</code></pre>
+<p>► Checking stationarity, we’ll be using the rolling statistics plots along with Dickey-Fuller test results.<br>
+For <a href="https://fr.wikipedia.org/wiki/Test_de_Dickey-Fuller">Dicky Fuller Test</a> : </p>
+<p>Null hypothesis in ADF test is that Data is not stationary.<br></p>
+<ul>
+<li>It’s better to have the p-value to be smaller than 0.05 inorder to reject the null hypothesis and consider data as stationary.</li>
+<li>If Test Statistic &lt; Critical Values =&gt; Rejects the null hypothesis.</li>
+<li>If Test Statistic &gt;Critical Values =&gt; failed to reject the null hypothesis</li>
+</ul>
+<pre><code class="language-bash">In : model.test_stationarity(model.data['new Q (l/s)'])
+</code></pre>
+<p><img alt="test stationarity" src="../teststationarity.png" /></p>
+<p>► In our example we can understand that my test statistics value = -8.097405e+00 is smaller than critical value(5%) = -2.861982e+00, Thus the data is stationary.
+If the data is not stationary we have to tranform it to make the data more stationary, using differencing technique for example.</p>
+<pre><code class="language-bash">Out : Results of Dickey-Fuller Test:
+Test Statistic                -8.097405e+00
+p-value                        1.327622e-12
+#Lags Used                     3.400000e+01
+Number of Observations Used    6.540000e+03
+Critical Value (1%)           -3.431350e+00
+Critical Value (5%)           -2.861982e+00
+Critical Value (10%)          -2.567005e+00
+dtype: float64
+</code></pre>
+<p>► We now experiment with the following three models:<br>
+<br>
+ 1. <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">Artificial Neural Network</a> <br>
+ 2. <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Recurrent Neural Network</a> <br>
+ 3. <a href="https://en.wikipedia.org/wiki/Long_short-term_memory">Long Short-Term Memory</a> <a href="https://keras.io/api/layers/recurrent_layers/lstm/">(a RNN with a LSTM layer)</a><br> <br></p>
+<p>► Plot of the predictions made by the <code>ANN</code>. <br></p>
+<pre><code class="language-bash">In : model.ANN_model(train = model.train, test = model.test, train_size = model.train_size, data = model.data, look_back = 20)
+</code></pre>
+<p><img alt="ANN" src="../ANN.png" /></p>
+<pre><code class="language-bash">Out : Test Score: 1858.73 RMSE
+Normalized RMSE: 0.03167030826699024
+</code></pre>
+<p>► Plot of the predictions made by the <code>LSTM</code>.<br></p>
+<pre><code class="language-bash">In : model.LSTM_model(train = model.train, test = model.test, train_size = model.train_size, data = model.data, look_back = 20)
+</code></pre>
+<p><img alt="LSTM" src="../LSTM.png" /></p>
+<pre><code class="language-bash">Out : Test Score: 1828.80 RMSE
+Normalized RMSE: 0.031160290158361494 
+</code></pre>
+<p>► Plot of the predictions made by the <code>RNN</code>. <br></p>
+<pre><code class="language-bash">In : model.RNN(train = model.train, test = model.test, train_size = model.train_size, data = model.data, look_back = 20)
+</code></pre>
+<p><img alt="RNN" src="../RNN.png" /></p>
+<pre><code class="language-bash">Out : Test Score: 1946.10 RMSE
+Normalized RMSE: 0.033158903327623425
+</code></pre>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../about/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../about/" class="btn btn-xs btn-link">
+        About
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../Usage/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../Usage/" class="btn btn-xs btn-link">
+        Usage
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+      <p>
+        <a href="https://github.com/callback21/GRFlood/edit/master/docs/Get_Started.md"><i class="fa fa-github"></i>
+Edit on GitHub</a>
+      </p>
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/callback21/GRFlood/">Windmill Dark</a> theme by None (noraj).</p>
+</footer>
+
+</body>
+</html>
